@@ -1,5 +1,11 @@
 import { Place } from 'src/place/place.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 
 @Entity()
 export class City {
@@ -15,6 +21,6 @@ export class City {
   @Column()
   lng: number;
 
-  @ManyToOne(() => Place, (place) => place.city)
+  @OneToMany(() => Place, (place) => place.city)
   places: Place[];
 }
